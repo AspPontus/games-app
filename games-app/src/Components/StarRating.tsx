@@ -17,6 +17,7 @@ function StarRating({ game }) {
   //Update stars when modal is closed..................[]
   //Update stars saving to the wrong user..............[X]
   //Login from write review button causes err..........[X]
+  //No star rating err fix.............................[]
   //Test everything....................................[]
 
  
