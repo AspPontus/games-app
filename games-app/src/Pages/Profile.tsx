@@ -1,21 +1,18 @@
-import { useNavigate } from "react-router-dom"
-import {useAuth} from '../context/AuthContext'
+import { useParams } from "react-router-dom";
+import CurrentUserInfo from "../Components/CurrentUserInfo";
+import UserMadeReviews from "../Components/UserMadeReviews";
+import Nav from "../Components/utils/Nav";
+import UserContentSelector from "../Components/UserContentSelector";
 
 function Profile() { 
-    const navigate = useNavigate();
-    const {currentUser}:any = useAuth();
-    console.log(currentUser)
-
-
-    const handleLogout = () => {
-        sessionStorage.removeItem('user')
-        navigate("/")
-    }
+  const params = useParams();
 
   return (
     <div>
-        <h1>Welcome {currentUser.username}</h1>
-        <button onClick={() => handleLogout()}>Log out</button>
+      <CurrentUserInfo id={params.id}/>
+      <UserContentSelector />
+      <UserMadeReviews id={params.id}/>
+      <Nav />
     </div>
   )
 }

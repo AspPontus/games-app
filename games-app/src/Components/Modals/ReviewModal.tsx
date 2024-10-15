@@ -16,7 +16,7 @@ const handleClick = () => {
         <div className="modal"> 
         <button className="close-modal" onClick={() => handleClick()}>X</button>
         <h1>{currentUser ? "Wriete your review": "Log In"}</h1>
-        {currentUser ? <ReviewForm game={game}/> : <LoginForm location={"review-modal"}/>}
+        {currentUser ? <ReviewForm game={game} setModal={setModal} /> : <LoginForm location={"review-modal"}/>}
         </div>
     </div>
   )

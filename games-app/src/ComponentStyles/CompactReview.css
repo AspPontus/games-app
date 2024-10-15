@@ -1,0 +1,23 @@
+.review-game-user-info{
+    display: flex;
+    gap: 1rem;
+}
+
+/* .vertical-stack{
+    border: 2px solid red;
+  } */
+
+.profile-review-feed{
+    background-color: #151414;
+    display: flex !important;
+    color: var(--off-white);
+    border-top: 1px solid grey;
+    padding-right: .5rem;
+    flex-direction: row;
+  }
+
+  .profile-review{
+    margin-left: .5rem;
+    width: 98%;
+    line-height: 120%;
+  }
