@@ -1,8 +1,10 @@
 import logo from "../assets/GA-Whit.png"
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 function Header() {
     const navigate = useNavigate()
+    const {currentUser}:any =useAuth();
 
     const handleMenu = ():void => {
         const line = document.querySelector('.h-line');
@@ -31,7 +33,7 @@ function Header() {
         <nav className="hidden-nav">
             <ul>
                 <li onClick={() => handleNavigate('login')}>Log in</li>
-                <li onClick={() => handleNavigate('profile')}>Profile</li>
+                <li onClick={() => handleNavigate(`profile/${currentUser.uid}`)}>Profile</li>
             </ul>
         </nav>
     </>

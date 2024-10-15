@@ -28,6 +28,8 @@ export function AuthProvider({children}) {
         })
         const data = await response.json();
         setCurrentUser(data)
+
+        return data.uid
     }
     
     const register = async (email:string, username:string, password:string, confirmPassword:string) => {
@@ -63,8 +65,8 @@ export function AuthProvider({children}) {
             'Content-Type': 'application/json',
         }
       })
-      const data = await api.json()
-      console.log(data)
+      const data = await api.json();
+      console.log(data);
       setCurrentUser(data);
       setLoading(false);
       return data;

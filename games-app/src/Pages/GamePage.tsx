@@ -49,7 +49,7 @@ function GamePage() {
   return (
     <div className='game-page'>
     
-        <Link to={'/'}><div className="back"><BiArrowBack /></div></Link>
+        <Link to={'/discover_games'}><div className="back"><BiArrowBack /></div></Link>
         <div className='player-bg overlay'>
         <img className='poster-bg' src={game.poster_img?.replace('w=177&h=177', 'w=600&h=600')} alt="" />
         <div className="game-info-title">
@@ -74,7 +74,7 @@ function GamePage() {
       </Splide>
         <div className="dev-desc">
           <div className='personal-rating'>
-            <StarRating game={game}/>
+            <StarRating game={game} modal={false}/>
             <Favorite />
           </div>
           <h3 className='developer'>{gameInfo.developer}</h3>
@@ -84,9 +84,10 @@ function GamePage() {
           <div className='readmore' onClick={() => setReadMore(!readMore)}>{readMore ? "Show less" : "Show more"}</div>         
           {/* MAKE INTO COMPONENT TO EASILY CHECK FOR NO REVIEWS EDGECASE */} 
           <h2 className="review-label">Reviews:</h2>
-          {<Reviews id={params.id}/>}
-          <button className='gradient-button write-review' onClick={() => handleClick()}>Write a review!</button>
+        
         </div>
+        {<Reviews id={params.id}/>}
+          <button className='gradient-button write-review center' onClick={() => handleClick()}>Write a review!</button>
         {modal ?  <ReviewModal setModal={setModal} game={game}/> : ''}
     </div>
   )

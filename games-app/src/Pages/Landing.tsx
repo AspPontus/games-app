@@ -8,7 +8,7 @@ function Landing() {
     <div className="landing bg">
       <Header />
       <Hero />
-      <ExampleBrowse />
+      {/* <ExampleBrowse /> */}
     </div>
   )
 }

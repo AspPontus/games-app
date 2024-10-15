@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext'
 import { useParams } from 'react-router-dom';
 
 
-function StarRating({ game }) {
+function StarRating({ game, modal }) {
   const [rating, setRating] = useState<number>(0);
   const { currentUser }:any = useAuth();
   const params = useParams();
@@ -19,7 +19,7 @@ function StarRating({ game }) {
   //Login from write review button causes err..........[X]
   //No star rating err fix.............................[]
   //Test everything....................................[]
-
+  
  
   const postStars = async (value) => {
     await fetch(`http://localhost:3000/api/users/${currentUser.uid}/stars`, {
@@ -40,7 +40,7 @@ function StarRating({ game }) {
     if (!currentUser) return;
     const api = await fetch(`http://localhost:3000/api/users/${currentUser.uid}/stars/${params.id}`)
     const data = await api.json();
-    setRating(data.stars) //changed from handleClick stops db bug
+    setRating(data.stars)
   }
 
 
@@ -54,7 +54,10 @@ function StarRating({ game }) {
      }
   } 
 
-
+  //runs on close modal
+  if(!modal) {
+    fetchPersonalRating();
+  }
 
   useEffect(() => {
     fetchPersonalRating();

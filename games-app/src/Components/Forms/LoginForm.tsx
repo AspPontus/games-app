@@ -1,8 +1,6 @@
 import { useState, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom"
 import { useAuth } from '../../context/AuthContext'
-import { fetchPersonalRating } from '../../context/fetchUserStars';
-import { useParams } from 'react-router-dom'
 
 
 function LoginForm({ location }) {
@@ -10,8 +8,7 @@ function LoginForm({ location }) {
   const passwordRef:any = useRef()
   const [error, setError] = useState<string>('')
   const navigate = useNavigate()
-  const { login, currentUser }:any = useAuth();
-  const params = useParams()
+  const { login }:any = useAuth();
 
   console.log(location)
 
@@ -20,9 +17,9 @@ function LoginForm({ location }) {
         console.log(emailRef)
         try {
           setError('');
-          await login(emailRef.current.value, passwordRef.current.value);
+          const id = await login(emailRef.current.value, passwordRef.current.value);
           if (location === "login-page") {
-            navigate("/profile");
+            navigate(`/profile/${id}`)
           } else {
             // try to get this to only run fetchPersonalRating instead
             /* window.location.reload(); */

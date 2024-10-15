@@ -1,0 +1,9 @@
+.user-content-selector-frame{
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    background-color: #151414;
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+    color: #e1e0e0;
+}

@@ -6,13 +6,15 @@ import '@splidejs/react-splide/css';
 import ReviewModalRead from './Modals/ReviewModalRead';
 
 function Reviews({id}) {
-    const [gameReviews, setGameReviews] = useState<any>({});
+    const [gameReviews, setGameReviews] = useState<any>([]);
     const [reviewObj, setReviewObj] = useState()
 
     const fetchGame = async () => {
-        const api = await fetch(`https://games-api-ky9l.onrender.com/api/games/${id}`);
+        const api = await fetch(`http://localhost:3000/api/game/${id}/reviews`);
         const data = await api.json();
-        setGameReviews(data.game_reviews)
+        console.log(data)
+        setGameReviews(data)
+        
     }
 
     const handleReviewStars = (amount:number) => {
@@ -39,7 +41,7 @@ function Reviews({id}) {
         drag: 'free',
         }}>
 
-          {gameReviews.user_reviews?.map((review, index) => {
+          {gameReviews.map((review, index) => {
             return (
               <SplideSlide className="review-slide" key={index}>
             <section className="review-container"  onClick={() => setReviewObj(review)}>
